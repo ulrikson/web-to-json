@@ -13,6 +13,7 @@ class Parser:
         self.__get_headers()
         self.__get_imgs()
         self.__get_links()
+        self.__get_text()
 
         with open("test.json", "w", encoding="utf-8") as file:
             json.dump(self.content, file, indent=4, ensure_ascii=False)
@@ -54,3 +55,9 @@ class Parser:
 
     def __get_exact_url(self, link):
         return self.url + link if link[0] == "/" else link
+
+    def __get_text(self):
+        self.content["text"] = []
+
+        for element in self.soup.find_all("p"):
+            self.content["text"].append(element.text)
