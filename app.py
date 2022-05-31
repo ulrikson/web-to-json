@@ -1,6 +1,6 @@
 from Parser import Parser
 
-url = "https://leadpilot.com"
+url = "https://todoist.com"
 
 Parser(url).convert_to_json()
 
