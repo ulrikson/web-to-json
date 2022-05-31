@@ -38,7 +38,10 @@ class Parser:
 
         for url in self.soup.find_all("a"):
             try:
-                link = self.__get_exact_url(url["href"])
+                link = {
+                    "text": url.text,
+                    "href": self.__get_exact_url(url["href"])
+                }
                 self.content["links"].append(link)
             except KeyError:
                 continue
